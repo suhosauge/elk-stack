@@ -1,11 +1,12 @@
 #!/bin/bash
-
+CERT_NAME="elkcerts"
+CERT_DIR="$PWD/$CERT_NAME"
 # Add root cert as trusted cert
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         # Linux
         apt-get -y install ca-certificates
         update-ca-certificates
-        cp rootCA.pem /usr/local/share/ca-certificates/
+        cp "$CERT_DIR/rootCA.pem" /usr/local/share/ca-certificates/
         update-ca-certificates
         #meeting ES requirement
         sysctl -w vm.max_map_count=262144
